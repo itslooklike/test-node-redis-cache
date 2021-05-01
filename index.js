@@ -36,6 +36,7 @@ function cache(req, res, next) {
     if (err) throw err
 
     if (data !== null) {
+      res.setHeader('X-From-Cache', 1)
       res.send(setResponse(username, data))
       console.log('from redis cache')
     } else {
